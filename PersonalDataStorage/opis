@@ -1,7 +1,10 @@
 
 Na starcie wyswietlany jest input do wpisania imienia i nazwiska 
 
-Nastepuje submit fomularza
+Po wpisaniu imienia i gdy nastapi klikniecie w okno z mozliwoscia dodania opisu 
+nastapi zjazd aby pokazało się okno telefonu i mejla. W tym samym czasie nastąpi pukniecie w rest.
 
-po wspisaniu imienia i nazwiska dodawane wyswietlane sa pola do telefonu kontaktowego, mejla, dodatkowe dane, i duze do zyczen
+
+
+
 
