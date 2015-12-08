@@ -10,19 +10,19 @@ public class Person {
 
 	private String msisdn;
 
-	private String mail;
+	private String email;
 
 	private String comment;
 
 	private String photoUrl;
 
-	public Person(String name, String msisdn, String mail, String comment, String photoUrl) {
-		this.name = name;
-		this.msisdn = msisdn;
-		this.mail = mail;
-		this.comment = comment;
-		this.photoUrl = photoUrl;
-	}
+	private String city;
+
+	private String street;
+
+	private String streetNumber;
+
+	private String flatNumber;;
 
 	@Override
 	public String toString() {
@@ -31,12 +31,20 @@ public class Person {
 		builder.append(name);
 		builder.append(", msisdn=");
 		builder.append(msisdn);
-		builder.append(", mail=");
-		builder.append(mail);
+		builder.append(", email=");
+		builder.append(email);
 		builder.append(", comment=");
 		builder.append(comment);
 		builder.append(", photoUrl=");
 		builder.append(photoUrl);
+		builder.append(", city=");
+		builder.append(city);
+		builder.append(", street=");
+		builder.append(street);
+		builder.append(", streetNumber=");
+		builder.append(streetNumber);
+		builder.append(", flatNumber=");
+		builder.append(flatNumber);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -57,14 +65,6 @@ public class Person {
 		this.msisdn = msisdn;
 	}
 
-	public String getMail() {
-		return mail;
-	}
-
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
 	public String getComment() {
 		return comment;
 	}
@@ -79,6 +79,46 @@ public class Person {
 
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getStreetNumber() {
+		return streetNumber;
+	}
+
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public String getFlatNumber() {
+		return flatNumber;
+	}
+
+	public void setFlatNumber(String flatNumber) {
+		this.flatNumber = flatNumber;
 	}
 
 }

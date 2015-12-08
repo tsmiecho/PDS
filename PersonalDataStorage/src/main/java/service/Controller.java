@@ -14,16 +14,6 @@ import pojo.Person;
  */
 public interface Controller {
 
-	String NAME = "name";
-
-	String MSISDN = "msisdn";
-
-	String MAIL = "mail";
-
-	String COMMENT = "comment";
-
-	String PHOTOURL = "photoUrl";
-
 	boolean validateData(Map<String, String> data);
 
 	boolean savePerson(Person p);

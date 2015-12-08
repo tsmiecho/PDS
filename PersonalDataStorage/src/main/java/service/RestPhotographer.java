@@ -9,6 +9,8 @@ import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
 
+import util.AppUtils;
+
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamUtils;
 import com.github.sarxos.webcam.util.ImageUtils;
@@ -24,8 +26,6 @@ import com.github.sarxos.webcam.util.ImageUtils;
 public class RestPhotographer {
 	
 	private static final Logger logger = Logger.getLogger(RestPhotographer.class);
-	
-	private static final String PHOTO_FOLDER_PATH = "/home/tsmiecho/Desktop/photos/";
 	
 	@GET
 	@Path("/{param}")
@@ -44,7 +44,7 @@ public class RestPhotographer {
 		
 		webcam.setViewSize(new Dimension(640, 480));
 		webcam.open();
- 		WebcamUtils.capture(webcam, PHOTO_FOLDER_PATH + name, ImageUtils.FORMAT_BMP);
+ 		WebcamUtils.capture(webcam, AppUtils.PHOTO_FOLDER_PATH + name, ImageUtils.FORMAT_BMP);
  		webcam.close();
  
 		return Response.status(200).build();

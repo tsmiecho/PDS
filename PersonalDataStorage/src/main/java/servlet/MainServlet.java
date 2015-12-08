@@ -33,11 +33,11 @@ public class MainServlet extends HttpServlet {
 		if (!controller.validateData(data)) {
 			//todo walidacja w js
 			logger.error("Wrong data " + data);
+			resp.sendRedirect("/PersonalDataStorage/");
 			return;
 		}
 
 		controller.createPerson(data);
-		
 		resp.sendRedirect("/PersonalDataStorage/");
 	}
 
