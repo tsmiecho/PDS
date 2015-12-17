@@ -16,7 +16,11 @@ public class AppUtils {
 
 	private static final Logger logger = Logger.getLogger(AppUtils.class);
 
-	public static final String PHOTO_FOLDER_PATH = "/home/tsmiecho/Desktop/photos/";
+	public static final String PHOTO_FOLDER_PATH = getBundle("photo.dir");
+
+	public static final String WEBCAM_WIDTH = getBundle("webcam.width");
+
+	public static final String WEBCAM_HEIGHT = getBundle("webcam.height");
 
 	public static final String NAME = "name";
 
@@ -27,15 +31,15 @@ public class AppUtils {
 	public static final String COMMENT = "comment";
 
 	public static final String PHOTO_URL = "photoUrl";
-	
+
 	public static final String CITY = "city";
-	
+
 	public static final String STREET = "street";
-	
+
 	public static final String STREET_NUMBER = "streetNumber";
-	
+
 	public static final String FLAT_NUMBER = "flatNumber";
-	
+
 	public static void writeBundles() {
 		ResourceBundle labels = ResourceBundle.getBundle("configuration", Locale.getDefault());
 		Enumeration<String> bundleKeys = labels.getKeys();
@@ -53,4 +57,5 @@ public class AppUtils {
 		ResourceBundle labels = ResourceBundle.getBundle("configuration", Locale.getDefault());
 		return labels.getString(key);
 	}
+	
 }

@@ -1,6 +1,6 @@
 package dao;
 
-import pojo.Person;
+import model.Person;
 
 
 /**
@@ -12,4 +12,6 @@ import pojo.Person;
 public interface PersonDao {
 
 	boolean savePerson(Person p);
+	
+	boolean removePersonByName(Person p);
 }

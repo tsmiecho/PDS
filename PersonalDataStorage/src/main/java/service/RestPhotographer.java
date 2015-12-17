@@ -24,31 +24,43 @@ import com.github.sarxos.webcam.util.ImageUtils;
  */
 @Path("/photo")
 public class RestPhotographer {
-	
+
 	private static final Logger logger = Logger.getLogger(RestPhotographer.class);
-	
+
 	@GET
 	@Path("/{param}")
 	public Response takePhoto(@PathParam("param") String name) {
-		
+
 		Webcam webcam = Webcam.getDefault();
 
 		if (webcam == null) {
 			logger.error("No webcam detected");
-			return Response.status(2).build();
+			return Response.status(500).build();
 		}
-		
+
 		if(logger.isDebugEnabled()){
 			logger.debug("Webcam: " + webcam.getName());
 		}
-		
-		webcam.setViewSize(new Dimension(640, 480));
+		 
+		webcam.setViewSize(getConfSize());
 		webcam.open();
- 		WebcamUtils.capture(webcam, AppUtils.PHOTO_FOLDER_PATH + name, ImageUtils.FORMAT_BMP);
- 		webcam.close();
- 
+		WebcamUtils.capture(webcam, AppUtils.PHOTO_FOLDER_PATH + name, ImageUtils.FORMAT_BMP);
+		webcam.close();
+
 		return Response.status(200).build();
- 
+
 	}
 
+	private Dimension getConfSize() {
+		int width, height;
+		try{
+    		width = Integer.valueOf(AppUtils.WEBCAM_WIDTH).intValue();
+    		height = Integer.valueOf(AppUtils.WEBCAM_HEIGHT).intValue();
+		}catch (Exception e) {
+			logger.warn(" Wrong dimension set in configuration ");
+			width = 640;
+			height = 480;
+		}
+	    return new Dimension(width, height);
+    }
 }

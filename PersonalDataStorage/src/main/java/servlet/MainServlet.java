@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,16 +28,14 @@ public class MainServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Map<String, String> data = controller.retrieveDataFromRequest(req);
-		if (!controller.validateData(data)) {
-			//todo walidacja w js
-			logger.error("Wrong data " + data);
-			resp.sendRedirect("/PersonalDataStorage/");
-			return;
-		}
 
-		controller.createPerson(data);
-		resp.sendRedirect("/PersonalDataStorage/");
+		try{
+			controller.createPerson(req);
+		}catch(Exception e){
+			logger.error(e.getMessage());
+		}finally{
+			resp.sendRedirect("/PersonalDataStorage/");
+		}
 	}
 
 	@Override

@@ -1,19 +1,17 @@
 package service;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+
+import model.Person;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
+import util.AppUtils;
 import dao.PersonDao;
 import dao.PersonDaoImpl;
-import pojo.Person;
-import util.AppUtils;
 
 /**
  * 
@@ -28,12 +26,10 @@ public class ControllerImpl implements Controller {
 	private PersonDao dao = new PersonDaoImpl();
 
 	@Override
-	public boolean validateData(Map<String, String> data) {
-		if(StringUtils.isBlank(data.get(AppUtils.NAME))){
-			logger.error("Name cannot be blank!");
-			return false;
+	public void validateData(Person p) {
+		if(StringUtils.isBlank(p.getName())){
+			throw new IllegalArgumentException("Name cannot be blank!");
 		}
-		return true;
 	}
 
 	@Override
@@ -50,38 +46,23 @@ public class ControllerImpl implements Controller {
 	}
 
 	@Override
-	public void createPerson(Map<String, String> data) {
+	public void createPerson(HttpServletRequest req) throws UnsupportedEncodingException {
+		
+		req.setCharacterEncoding("UTF-8");
 
 		Person p = new Person();
-		p.setName(data.get(AppUtils.NAME));
-		p.setMsisdn(data.get(AppUtils.MSISDN));
-		p.setEmail(data.get(AppUtils.MAIL));
-		p.setComment(data.get(AppUtils.COMMENT));
-		p.setPhotoUrl(getPhotoPath(data.get(AppUtils.NAME)));
-		p.setCity(data.get(AppUtils.CITY));
-		p.setStreet(data.get(AppUtils.STREET));
-		p.setStreetNumber(data.get(AppUtils.STREET_NUMBER));
-		p.setFlatNumber(data.get(AppUtils.FLAT_NUMBER));
+		p.setName(req.getParameter(AppUtils.NAME));
+		p.setMsisdn(req.getParameter(AppUtils.MSISDN));
+		p.setEmail(req.getParameter(AppUtils.MAIL));
+		p.setComment(req.getParameter(AppUtils.COMMENT));
+		p.setPhotoUrl(getPhotoPath(req.getParameter(AppUtils.NAME)));
+		p.setCity(req.getParameter(AppUtils.CITY));
+		p.setStreet(req.getParameter(AppUtils.STREET));
+		p.setStreetNumber(req.getParameter(AppUtils.STREET_NUMBER));
+		p.setFlatNumber(req.getParameter(AppUtils.FLAT_NUMBER));
+		
+		validateData(p);
 		savePerson(p);
-	}
-
-	@Override
-	public Map<String, String> retrieveDataFromRequest(HttpServletRequest req) {
-		try {
-	        req.setCharacterEncoding("UTF-8");
-        } catch (UnsupportedEncodingException e) {
-        	logger.error(e,e);
-        }
-		Map<String, String> data = new HashMap<String, String>();
-		data.put(AppUtils.NAME, req.getParameter(AppUtils.NAME));
-		data.put(AppUtils.MSISDN, req.getParameter(AppUtils.MSISDN));
-		data.put(AppUtils.MAIL, req.getParameter(AppUtils.MAIL));
-		data.put(AppUtils.COMMENT, req.getParameter(AppUtils.COMMENT));
-		data.put(AppUtils.CITY, req.getParameter(AppUtils.CITY));
-		data.put(AppUtils.STREET, req.getParameter(AppUtils.STREET));
-		data.put(AppUtils.STREET_NUMBER, req.getParameter(AppUtils.STREET_NUMBER));
-		data.put(AppUtils.FLAT_NUMBER, req.getParameter(AppUtils.FLAT_NUMBER));
-		return data;
 	}
 
 }

@@ -1,10 +1,8 @@
 package service;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
-import pojo.Person;
+import model.Person;
 
 /**
  * Część odpowiedzialna za logike aplikacji.
@@ -14,13 +12,12 @@ import pojo.Person;
  */
 public interface Controller {
 
-	boolean validateData(Map<String, String> data);
+	void validateData(Person p);
 
 	boolean savePerson(Person p);
 
 	String getPhotoPath(String name);
 
-	void createPerson(Map<String, String> data);
+	void createPerson(HttpServletRequest req) throws Exception;
 
-	Map<String, String> retrieveDataFromRequest(HttpServletRequest req);
 }

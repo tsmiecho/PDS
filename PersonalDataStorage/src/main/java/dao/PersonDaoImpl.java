@@ -5,9 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.Person;
+
 import org.apache.log4j.Logger;
 
-import pojo.Person;
 import util.AppUtils;
 
 /**
@@ -44,7 +45,7 @@ public class PersonDaoImpl implements PersonDao {
 		}
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(AppUtils.getBundle("jdbc.driver"));
 		} catch (ClassNotFoundException e1) {
 			logger.error(e1, e1);
 		}
@@ -54,7 +55,6 @@ public class PersonDaoImpl implements PersonDao {
 																		AppUtils.getBundle("db.login"),
 																		AppUtils.getBundle("db.password"));
 			 Statement statement = connection.createStatement();) {
-
 			statement.execute(sb.toString());
 
 		} catch (SQLException e) {
@@ -63,4 +63,27 @@ public class PersonDaoImpl implements PersonDao {
 		return true;
 	}
 
+	@Override
+    public boolean removePersonByName(Person p) {
+		
+		try {
+			Class.forName(AppUtils.getBundle("jdbc.driver"));
+		} catch (ClassNotFoundException e1) {
+			logger.error(e1, e1);
+		}
+		
+		try (Connection connection = DriverManager.getConnection(
+																		AppUtils.getBundle("jdbc.url"),
+																		AppUtils.getBundle("db.login"),
+																		AppUtils.getBundle("db.password"));
+			 Statement statement = connection.createStatement();) {
+			
+			statement.execute("DELETE FROM Person WHERE name='" + p.getName() + "';");
+
+		} catch (SQLException e) {
+			logger.error(e, e);
+		}
+	    return false;
+    }
+	
 }
