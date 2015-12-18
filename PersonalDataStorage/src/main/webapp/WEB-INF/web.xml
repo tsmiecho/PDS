@@ -22,4 +22,13 @@
 		<servlet-name>Jersey Web Application</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Thanks</servlet-name>
+		<jsp-file>/thanks.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Thanks</servlet-name>
+		<url-pattern>/thanks</url-pattern>
+	</servlet-mapping>
 </web-app>

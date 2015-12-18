@@ -34,7 +34,7 @@ public class MainServlet extends HttpServlet {
 		}catch(Exception e){
 			logger.error(e.getMessage());
 		}finally{
-			resp.sendRedirect("/PersonalDataStorage/");
+			req.getRequestDispatcher("/thanks").forward(req, resp);
 		}
 	}
 
