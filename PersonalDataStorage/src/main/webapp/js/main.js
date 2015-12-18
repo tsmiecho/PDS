@@ -55,7 +55,7 @@ function validateForm() {
 	var x = document.forms["main"]["name"].value;
 	if (x == null || x == "") {
 		document.getElementById('first-input').className = "form-group has-error has-feedback";
-		document.getElementById('name-error').className = "";
+		document.getElementById('name-error').className = "control-label";
 		document.getElementById('name-error-s').className = "glyphicon glyphicon-remove form-control-feedback";
 		document.getElementById("name-error").scrollIntoView();
 		return false;

@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <html lang="pl_PL">
 <head>
@@ -8,13 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Witam</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<script src="js/main.js"></script>
 </head>
 <body>
-<fmt:setBundle basename="configuration"/>
 
 	<div class="container">
 

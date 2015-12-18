@@ -19,11 +19,13 @@
 	<div class="container">
 
 		<div class="row">
-			<img src="http://placehold.it/1200x600" class="img-thumbnail">
+			<img src="images/1200x600.png" class="img-thumbnail">
 		</div>
+		
 		<div class="row">
 			<div class="separator"></div>
 		</div>
+		
 		<form role="form" name="main" action="add" method="post" onsubmit="return fsubmit();" autocomplete="off">
 		
 		<div class="row">
@@ -33,6 +35,7 @@
 				<label id="name-error" class="hidden" for="name"><fmt:message key="name.error" /></label>
 			</div>
 		</div>
+		
 		<div class="row">
 			<div class="progress progress-striped active">
 				<div id="progress-bar" class="progress-bar progress-bar-success" style="width: 0%"></div>
@@ -58,19 +61,6 @@
 			<div class="form-group">
 				<fmt:message key="comment.box.desc" />
 				<textarea name="comment" class="form-control input-lg" rows="4"></textarea>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-4">
-				<a class="btn btn-default glyphicon" data-toggle="collapse" data-target="#expandable-row">
-					<fmt:message key="adress.data.comment" />
-				</a>
-			</div>
-			<div class="col-md-2"></div>
-			<div class="col-md-4">
-				<button><img src="http://placehold.it/200x20" class="img-thumbnail"></button>
 			</div>
 		</div>
 		
@@ -100,6 +90,19 @@
 					<input data-toggle="tooltip" data-placement="top" title="<fmt:message key="if.absent.comment" />"
 							 class="form-control input-lg" type="text" name="flatNumber" />
 				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<a class="btn btn-default glyphicon" data-toggle="collapse" data-target="#expandable-row">
+					<fmt:message key="adress.data.comment" />
+				</a>
+			</div>
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<button><img src="images/200x20.png" class="img-thumbnail"></button>
 			</div>
 		</div>
 		</form>
