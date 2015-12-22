@@ -29,9 +29,21 @@ $(document).ready(function() {
 	});
 });
 
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
+$(document).ready(function() {
+	$('[data-toggle="tooltip"]').tooltip();
 });
+
+$(document).ready(function() {
+	$('html, body').animate({
+		scrollTop : $("#progress-bar").offset().top
+	}, 1000);
+});
+
+function expand() {
+	$('html, body').animate({
+		scrollTop : $("#expander").offset().top
+	}, 200);
+}
 
 function doIfInMap(name) {
 	var value = map[name];
@@ -75,7 +87,7 @@ function fsubmit() {
 }
 
 function setProgress() {
-	progress = progress + 100 / 8;
+	progress = progress + 100 / 7;
 	var v = progress + '%'
 	document.getElementById('progress-bar').style.width = v;
 }

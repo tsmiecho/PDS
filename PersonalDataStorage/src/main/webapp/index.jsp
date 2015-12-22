@@ -43,50 +43,54 @@
 		</div>
 		
 		<div class="row">
-			<label class="control-label col-md-2" for="msisdn"><fmt:message key="msisdn.comment"/></label>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<div class="form-group">
+					<label class="control-label inputlg" for="msisdn"><fmt:message key="msisdn.comment"/></label>
 					<input class="form-control input-lg" type="text" name="msisdn" />
 				</div>
 			</div>
-			<label class="control-label col-md-2" for="mail"><fmt:message key="mail.comment"/></label>
-			<div class="col-md-4">
+			
+			<div class="col-md-6">
 				<div class="form-group">
-					<input class="form-control input-lg" type="text" name="mail" />
+					<label class="control-label inputlg" for="mail"><fmt:message key="mail.comment"/></label>
+					<input class="form-control input-lg" type="text" name="mail" 
+					data-toggle="tooltip" data-placement="top" title="<fmt:message key="if.absent.comment" />" />
 				</div>
 			</div>
 		</div>
 		
 		<div class="row">
-			<div class="form-group">
-				<fmt:message key="comment.box.desc" />
-				<textarea name="comment" class="form-control input-lg" rows="4"></textarea>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label class="control-label inputlg" for="comment"><fmt:message key="comment.box.desc" /></label>
+					<textarea name="comment" class="form-control input-lg" rows="4"></textarea>
+				</div>
 			</div>
 		</div>
 		
 		<div id="expandable-row" class="row collapse">
 			<div class="col-md-3">
 				<div class="form-group">
-					<fmt:message key="city.comment" />
+					<label class="control-label inputlg" for="city"><fmt:message key="city.comment" /></label>
 					<input class="form-control input-lg" type="text" name="city" />
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="form-group">
-					<fmt:message key="street.comment" />
-					<input data-toggle="tooltip" data-placement="left" title="<fmt:message key="if.absent.comment" />"
+					<label class="control-label inputlg" for="street"><fmt:message key="street.comment" /></label>
+					<input data-toggle="tooltip" data-placement="top" title="<fmt:message key="if.absent.comment" />"
 							 class="form-control input-lg" type="text" name="street" />
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="form-group">
-					<fmt:message key="streetnumber.comment" />
+					<label class="control-label inputlg" for="streetNumber"><fmt:message key="streetnumber.comment" /></label>
 					<input class="form-control input-lg" type="text" name="streetNumber" />
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="form-group">
-					<fmt:message key="flatnumber.comment" />
+					<label class="control-label inputlg" for="flatNumber"><fmt:message key="flatnumber.comment" /></label>
 					<input data-toggle="tooltip" data-placement="top" title="<fmt:message key="if.absent.comment" />"
 							 class="form-control input-lg" type="text" name="flatNumber" />
 				</div>
@@ -96,7 +100,7 @@
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-4">
-				<a class="btn btn-default glyphicon" data-toggle="collapse" data-target="#expandable-row">
+				<a id="expander" onclick="expand();" class="btn btn-default glyphicon" data-toggle="collapse" data-target="#expandable-row" >
 					<fmt:message key="adress.data.comment" />
 				</a>
 			</div>
@@ -106,6 +110,11 @@
 			</div>
 		</div>
 		</form>
+		
+		<div class="row">
+			<div class="separator"></div>
+		</div>
+		
 	</div>
 
 </body>
