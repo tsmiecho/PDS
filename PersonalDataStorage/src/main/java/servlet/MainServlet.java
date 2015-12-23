@@ -31,10 +31,10 @@ public class MainServlet extends HttpServlet {
 
 		try{
 			controller.createPerson(req);
-		}catch(Exception e){
-			logger.error(e.getMessage());
-		}finally{
 			req.getRequestDispatcher("/thanks").forward(req, resp);
+		}catch(Exception e){
+			logger.error(e);
+			req.getRequestDispatcher("/").forward(req, resp);
 		}
 	}
 
